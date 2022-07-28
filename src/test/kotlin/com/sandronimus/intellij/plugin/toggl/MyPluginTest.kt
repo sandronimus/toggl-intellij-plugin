@@ -1,4 +1,4 @@
-package com.github.sandronimus.togglintellijplugin
+package com.sandronimus.intellij.plugin.toggl
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.psi.xml.XmlFile

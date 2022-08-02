@@ -7,9 +7,18 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglApiTokenService"/>
-        <applicationConfigurable parentId="tools" instance="com.sandronimus.intellij.plugin.toggl.settings.TogglSettings"
-                                 id="com.sandronimus.intellij.plugin.toggl.settings.TogglSettings" displayName="Toggl" />
+        <applicationService
+                serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglApiTokenService"/>
+        <applicationService serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglService"/>
+        <applicationService
+                serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglBackgroundDataUpdater"/>
+        <applicationService serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglTimerState"/>
+        <applicationService serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglPopupBuilder"/>
+        <applicationConfigurable parentId="tools"
+                                 instance="com.sandronimus.intellij.plugin.toggl.settings.TogglSettings"
+                                 id="com.sandronimus.intellij.plugin.toggl.settings.TogglSettings" displayName="Toggl"/>
+        <statusBarWidgetFactory implementation="com.sandronimus.intellij.plugin.toggl.ui.TogglStatusBarWidgetFactory"/>
+        <preloadingActivity implementation="com.sandronimus.intellij.plugin.toggl.preloaders.TogglPluginLoader"/>
     </extensions>
 
     <applicationListeners>

@@ -1,12 +1,14 @@
 package com.sandronimus.intellij.plugin.toggl.settings
 
-import com.sandronimus.intellij.plugin.toggl.services.TogglApiTokenService
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.Configurable
+import com.sandronimus.intellij.plugin.toggl.services.TogglApiTokenService
+import com.sandronimus.intellij.plugin.toggl.services.TogglBackgroundDataUpdater
 import javax.swing.JComponent
 
 class TogglSettings: Configurable {
     private var togglApiTokenService: TogglApiTokenService = service()
+    private val backgroundDataUpdater = service<TogglBackgroundDataUpdater>()
     private lateinit var component: TogglSettingsComponent
 
     override fun createComponent(): JComponent {
@@ -33,6 +35,8 @@ class TogglSettings: Configurable {
         togglApiTokenService.saveApiToken(apiToken)
         component.passwordNotEmpty = true
         component.resetPasswordFieldState()
+
+        backgroundDataUpdater.updateAll()
     }
 
     override fun reset() {

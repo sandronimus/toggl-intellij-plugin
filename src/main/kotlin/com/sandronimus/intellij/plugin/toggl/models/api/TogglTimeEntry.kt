@@ -1,15 +1,26 @@
 package com.sandronimus.intellij.plugin.toggl.models.api
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class TogglTimeEntry(
+    @Expose
     val start: Date,
+
+    @Expose
     val description: String,
+
+    @Expose
     val id: Long,
 
     @SerializedName("project_id")
-    val projectId: Long,
+    @Expose
+    val projectId: Long?,
+
+    @SerializedName("workspace_id")
+    @Expose
+    val workspaceId: Long,
 ) {
     private val durationString: String
         get() {

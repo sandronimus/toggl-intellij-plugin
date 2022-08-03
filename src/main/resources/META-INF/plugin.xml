@@ -14,11 +14,13 @@
                 serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglBackgroundDataUpdater"/>
         <applicationService serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglTimerState"/>
         <applicationService serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglPopupBuilder"/>
+        <applicationService serviceImplementation="com.sandronimus.intellij.plugin.toggl.services.TogglNotifier"/>
         <applicationConfigurable parentId="tools"
                                  instance="com.sandronimus.intellij.plugin.toggl.settings.TogglSettings"
                                  id="com.sandronimus.intellij.plugin.toggl.settings.TogglSettings" displayName="Toggl"/>
         <statusBarWidgetFactory implementation="com.sandronimus.intellij.plugin.toggl.ui.TogglStatusBarWidgetFactory"/>
         <preloadingActivity implementation="com.sandronimus.intellij.plugin.toggl.preloaders.TogglPluginLoader"/>
+        <notificationGroup displayType="BALLOON" id="Toggl"/>
     </extensions>
 
     <applicationListeners>

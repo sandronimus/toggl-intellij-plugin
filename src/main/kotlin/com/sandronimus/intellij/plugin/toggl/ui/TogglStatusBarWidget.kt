@@ -9,6 +9,7 @@ import com.intellij.openapi.wm.StatusBar
 import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.util.Consumer
 import com.intellij.util.concurrency.annotations.RequiresEdt
+import com.sandronimus.intellij.plugin.toggl.models.api.TogglProject
 import com.sandronimus.intellij.plugin.toggl.notifiers.TogglTimerStateNotifier
 import com.sandronimus.intellij.plugin.toggl.services.TogglPopupBuilder
 import com.sandronimus.intellij.plugin.toggl.services.TogglTimerState
@@ -39,6 +40,13 @@ class TogglStatusBarWidget : StatusBarWidget, StatusBarWidget.MultipleTextValues
         messageBus.connect()
             .subscribe(TogglTimerStateNotifier.CHANGE_STATE, object : TogglTimerStateNotifier.ChangeState {
                 override fun stateChanged(newState: TogglTimerState.State) {
+                    updateLater()
+                }
+            })
+
+        messageBus.connect()
+            .subscribe(TogglTimerStateNotifier.CHANGE_PROJECTS, object : TogglTimerStateNotifier.ChangeProjects {
+                override fun projectsChanged(newProjects: HashMap<Long, TogglProject>) {
                     updateLater()
                 }
             })

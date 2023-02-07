@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.sandronimus.intellij.plugin.toggl</id>
     <name>Toggl Track</name>
-    <vendor>Alexander Shevyakov</vendor>
+    <vendor>Alexander Lipetskih</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
